@@ -75,6 +75,28 @@ and open the template in the editor.
 
             }
             
+            function showRules(){
+                document.getElementById("rules").innerHTML = "Tokio è un gioco popolare, di dubbia origine, presente in numerosissime varianti non unificate, per quanto ormai sia molto diffuso. Si trova generalmente scritto con la "i", nonostante che la città da cui prende il nome sia trascritta ufficialmente come "Tokyo". 
+                Per giocare a Tokio sono necessari due dadi a 6 facce. Non c’è un numero massimo di giocatori, ma bisogna essere almeno in 2.
+
+Ogni volta che vengono lanciati i dadi il punteggio viene calcolato considerando il numero più alto come le decine ed il più basso come le unità; in caso di due numeri uguali si parla di coppie. Le coppie valgono più dei numeri spaiati, il 21 si chiama “Tokio” ed è il punteggio massimo.
+I punteggi possibili sono dunque, in ordine crescente: 31, 32, 41, 42, 43, 51, 52, 53, 54, 61, 62, 63, 64, 65, coppia di 1, coppia di 2, coppia di 3, coppia di 4, coppia di 5, coppia di 6, Tokio (21).
+
+Tokio è un gioco ad eliminazione. I giocatori iniziano con 10 punti a testa (ma si può decidere di aumentare o diminuire i punti iniziali per variare la durata della partita), e chi si ritrova a 0 punti viene eliminato. Vince l’ultimo giocatore a conservare almeno un punto.
+
+Seduti intorno ad un tavolo, i giocatori decidono se procedere in senso orario o antiorario, e stabiliscono chi di loro deve iniziare. Il giocatore designato lancia i dadi, occultandoli con una mano (o un altro ostacolo visivo), e dichiara un punteggio che non deve necessariamente essere quello realizzato. Il giocatore che segue può scegliere se accettare il risultato o dubitare.
+Se dubita, il giocatore che ha effettuato il tiro scopre i dadi e fa vedere il punteggio realizzato. Chi dei due sbaglia (il tiratore se ha dichiarato il falso, il dubitante se invece il tiro corrisponde alla dichiarazione) prende una penalità di un punto.
+Se accetta, a sua volta tira in segreto i due dadi, ma adesso deve realizzare con il suo tiro un valore uguale o superiore a quello dichiarato dal giocatore precedente. Può anch’egli dichiarare un risultato falso, e non può in ogni caso dichiararne uno più basso, altrimenti prende automaticamente la penalità.
+
+Il turno va avanti fino a che non viene assegnata la penalità. Il giocatore penalizzato ricomincia il giro, senza avere un risultato da superare.
+Ogni volta che qualcuno dichiara “Tokio” le penalità sono doppie.
+
+Tra le numerose varianti al gioco, una molto popolare prevede che, su una dichiarazione “Tokio”, il giocatore successivo possa, oltre che accettare (dovendo a sua volta dichiarare un “Tokio”) o dubitare (mettendo in ballo una penalità di 2 punti), possa decidere di prendere in automatico una penalità di 1 punto e ricominciare da 0, senza verificare la veridicità del tiro precedente.
+
+Taipei, Yokohama e Pechino sono le varianti (sicuramente più moderne), con le stesse regole, che usano rispettivamente i dadi da 4, 8 e 10. Notare come nel Pechino ci sia lo zero, quindi “Pechino” sarà 10, e non 21.";
+                
+            }
+            
             //funzione che genera i valori dei dadi
             function tira(){
                 document.getElementById("calcola").innerHTML='<button class="foot" name="calcla" onclick=\'ceckWinner()\'>Calcola</button>';
@@ -90,6 +112,9 @@ and open the template in the editor.
     </head>
     <body class="field">
         <h2 id="intro">This game is called Tokio</h2>
+        <br>
+        <a class="link" href="https://it.wikipedia.org/wiki/Tokyo">Curiosità su Tokyo</a>
+        <
         <h1 class="userDado" id="userDado1"></h1>
         <h1 class="userDado" id="userDado2"></h1>
         <br>
