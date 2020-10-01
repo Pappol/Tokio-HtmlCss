@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Tokio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            //classe dado elemento principale che contiene il valore del tiro del dado e il nomedel file corrispondente all immagine del tiro
+            class dado{
+                constructor(){
+                    this.value=Math.floor(Math.random()*5)+1;
+                }
+                image(){
+                    return this.value+".png";
+                }
+            } 
+            
+            class player{
+                constructor(){
+                    this.dado1=new dado();
+                    this.dado2=new dado();
+                    this.punti=0;
+                }
+                
+            }
+            //tiro dei dadi e calcolo del punteggio
+            function play(p){
+                    p.dado1.value=Math.floor(Math.random()*5)+1;
+                    p.dado2.value=Math.floor(Math.random()*5)+1;
+                    p.punti=calcolaPunti(p.dado1.value,p.dado2.value);
+                }
+
+            //logica di gioco vedi regole
+            function calcolaPunti(d1,d2){
+                let ret;
+                if(d1>d2){
+                    ret=d1*10+d2;
+                }else{
+                    if(d1==d2){
+                        ret=d1*10+d2*10;
+                    }else{
+                        ret=d2*10+d1;
+                    }
+                }
+                if(d1==1 && d2==2|| d1==2 && d2==1){
+                    ret=130;
+                }
+                return ret
+            }
+            
+            // funzione checompara i punteggi e crea un alert per il vincitore
+            function ceckWinner(){
+                console.log("io punti="+user.punti);
+                if(user.punti>=computer.punti){
+                    window.alert("You WON!!!");
+                }else{
+                    window.alert("You lost");
+                }
+            }
+            
+            //funzione che modifica la "pagina iniziale" e porta nel gioco
+            function startGame(){
+                document.getElementById("intro").innerHTML='<h2 class="titolo">Tokio</h2>';
+                document.getElementById("rules").innerHTML='<h4 class="foot" id="rules"><a class="link" href="https://www.goblins.net/recensioni/tokio" >these are the rules of the game</a></h4>';
+                document.getElementById("Tira").innerHTML='<button class="foot" name="Tira" onclick=\'tira()\'>Tira</button>';
+                user=new player();
+                computer=new player();
+                var toRemove=document.getElementById("Start");
+                toRemove.removeChild(toRemove.childNodes[0]);
+
+            }
+            
+            //funzione che genera i valori dei dadi
+            function tira(){
+                document.getElementById("calcola").innerHTML='<button class="foot" name="calcla" onclick=\'ceckWinner()\'>Calcola</button>';
+                play(user);
+                play(computer);
+                document.getElementById("userDado1").innerHTML='<img src="'+user.dado1.image()+'" alt="'+user.dado1.value+'">';
+                document.getElementById("userDado2").innerHTML='<img src="'+user.dado2.image()+'" alt="'+user.dado2.value+'">';
+                console.log("tu:"+user.dado1.value,user.dado2.value+" computer:"+computer.dado1.value,computer.dado2.value);
+                document.getElementById("computerDado1").innerHTML='<img src="'+computer.dado1.image()+'" alt="'+computer.dado1.value+'">';
+                document.getElementById("computerDado2").innerHTML='<img src="'+computer.dado2.image()+'" alt="'+computer.dado2.value+'">';
+            }
+        </script>
+    </head>
+    <body class="field">
+        <h2 id="intro">This game is called Tokio</h2>
+        <h1 class="userDado" id="userDado1"></h1>
+        <h1 class="userDado" id="userDado2"></h1>
+        <br>
+        <h1 class="link" id="computerDado1"></h1>
+        <h1 class="link" id="computerDado2"></h1>
+
+        <h3 id="Tira"></h3>
+        <h3 id="Start"><button  onclick='startGame();'>Start Game</button></h3>
+        <h1 id="calcola"></h1>
+        <h4 id="rules"><a class="link" href="https://www.goblins.net/recensioni/tokio" >these are the rules of the game</a></h4>
+        <script>counter=0;</script>
+    </body>
+</html>
